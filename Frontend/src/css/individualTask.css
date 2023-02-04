@@ -1,0 +1,31 @@
+header{
+    color: antiquewhite !important;
+    padding-left: 25%;
+    margin: 2em;
+}
+
+.navbar-brand{
+    font-family: Caveat;
+    font-weight: bold;
+    color:antiquewhite !important;
+}
+
+.navbar *{
+    color: antiquewhite !important;
+}
+
+
+body{
+    display: block;
+    background-color: #181a1b !important;
+    align-items: center;
+}
+
+.comment-section{
+    max-width: 90%;
+    padding-left: 10%;
+}
+
+.list-group *{
+    background-color: #c0c0c0 !important;
+}

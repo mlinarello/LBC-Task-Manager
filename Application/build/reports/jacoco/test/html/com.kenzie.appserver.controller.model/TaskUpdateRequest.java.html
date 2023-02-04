@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskUpdateRequest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application</a> &gt; <a href="index.source.html" class="el_package">com.kenzie.appserver.controller.model</a> &gt; <span class="el_source">TaskUpdateRequest.java</span></div><h1>TaskUpdateRequest.java</h1><pre class="source lang-java linenums">package com.kenzie.appserver.controller.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import javax.validation.constraints.NotEmpty;
+
+<span class="nc" id="L7">public class TaskUpdateRequest {</span>
+
+    @NotEmpty
+    @JsonProperty(&quot;creatorUsername&quot;)
+    private String creatorUsername;
+
+    @NotEmpty
+    @JsonProperty(&quot;taskId&quot;)
+    private String taskId;
+
+    @NotEmpty
+    @JsonProperty(&quot;description&quot;)
+    private String description;
+
+    @NotEmpty
+    @JsonProperty(&quot;title&quot;)
+    private String title;
+
+    @NotEmpty
+    @JsonProperty(&quot;collaborators&quot;)
+    private String collaborators;
+
+    @NotEmpty
+    @JsonProperty(&quot;status&quot;)
+    private String status;
+
+    public String getCreatorUsername() {
+<span class="nc" id="L34">        return creatorUsername;</span>
+    }
+
+    public void setCreatorUsername(String creatorUsername) {
+<span class="nc" id="L38">        this.creatorUsername = creatorUsername;</span>
+<span class="nc" id="L39">    }</span>
+
+    public String getTaskId() {
+<span class="nc" id="L42">        return taskId;</span>
+    }
+
+    public void setTaskId(String taskId) {
+<span class="nc" id="L46">        this.taskId = taskId;</span>
+<span class="nc" id="L47">    }</span>
+
+    public String getDescription() {
+<span class="nc" id="L50">        return description;</span>
+    }
+
+    public void setDescription(String description) {
+<span class="nc" id="L54">        this.description = description;</span>
+<span class="nc" id="L55">    }</span>
+
+    public String getTitle() {
+<span class="nc" id="L58">        return title;</span>
+    }
+
+    public void setTitle(String title) {
+<span class="nc" id="L62">        this.title = title;</span>
+<span class="nc" id="L63">    }</span>
+
+    public String getCollaborators() {
+<span class="nc" id="L66">        return collaborators;</span>
+    }
+
+    public void setCollaborators(String collaborators) {
+<span class="nc" id="L70">        this.collaborators = collaborators;</span>
+<span class="nc" id="L71">    }</span>
+
+    public String getStatus() {
+<span class="nc" id="L74">        return status;</span>
+    }
+
+    public void setStatus(String status) {
+<span class="nc" id="L78">        this.status = status;</span>
+<span class="nc" id="L79">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaskController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application</a> &gt; <a href="index.source.html" class="el_package">com.kenzie.appserver.controller</a> &gt; <span class="el_source">TaskController.java</span></div><h1>TaskController.java</h1><pre class="source lang-java linenums">package com.kenzie.appserver.controller;
+
+import com.kenzie.appserver.controller.model.*;
+import com.kenzie.appserver.controller.model.TaskCreateRequest;
+import com.kenzie.appserver.controller.model.TaskResponse;
+import com.kenzie.appserver.repositories.model.TaskRecord;
+import com.kenzie.appserver.service.TaskService;
+import com.kenzie.appserver.service.model.Status;
+import com.kenzie.appserver.service.model.Task;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping(value = &quot;/tasks&quot;)
+public class TaskController {
+    TaskService taskService;
+
+<span class="nc" id="L23">    public TaskController(TaskService taskService) {</span>
+<span class="nc" id="L24">        this.taskService = taskService;</span>
+<span class="nc" id="L25">    }</span>
+
+    @PostMapping
+    public ResponseEntity&lt;TaskResponse&gt; createTask(@RequestBody TaskCreateRequest taskCreateRequest) {
+<span class="nc" id="L29">        Task task = new Task(taskCreateRequest.getCreatorUsername(),</span>
+<span class="nc" id="L30">                UUID.randomUUID().toString(),</span>
+<span class="nc" id="L31">                taskCreateRequest.getDescription(),</span>
+<span class="nc" id="L32">                taskCreateRequest.getTitle(),</span>
+<span class="nc" id="L33">                taskCreateRequest.getCollaborators(),</span>
+<span class="nc" id="L34">                Status.TODO.toString());</span>
+
+<span class="nc" id="L36">        taskService.createTask(task);</span>
+
+<span class="nc" id="L38">        TaskResponse taskResponse = createTaskResponse(task);</span>
+
+<span class="nc" id="L40">        return ResponseEntity.created(URI.create(&quot;/tasks/&quot; + taskResponse.getTaskId())).body(taskResponse);</span>
+
+    }
+
+    @PutMapping
+    public ResponseEntity&lt;TaskResponse&gt; updateTask(@RequestBody TaskUpdateRequest taskUpdateRequest){
+<span class="nc" id="L46">        Task task = new Task(taskUpdateRequest.getCreatorUsername(),</span>
+<span class="nc" id="L47">                taskUpdateRequest.getTaskId(),</span>
+<span class="nc" id="L48">                taskUpdateRequest.getDescription(),</span>
+<span class="nc" id="L49">                taskUpdateRequest.getTitle(),</span>
+<span class="nc" id="L50">                taskUpdateRequest.getCollaborators(),</span>
+<span class="nc" id="L51">                taskUpdateRequest.getStatus());</span>
+
+<span class="nc" id="L53">        taskService.updateTask(task);</span>
+
+<span class="nc" id="L55">        TaskResponse taskResponse = createTaskResponse(task);</span>
+
+<span class="nc" id="L57">        return ResponseEntity.ok(taskResponse);</span>
+    }
+
+    @RequestMapping(&quot;/{taskId}/comments&quot;)
+    public ResponseEntity&lt;CommentResponse&gt; createComment(CommentCreateRequest commentCreateRequest) {
+<span class="nc" id="L62">        return ResponseEntity.ok().build();</span>
+    }
+
+    @GetMapping
+    public ResponseEntity&lt;List&lt;TaskResponse&gt;&gt; getAllTasks() {
+<span class="nc" id="L67">        List&lt;Task&gt; tasks = taskService.getAllTasks();</span>
+
+<span class="nc bnc" id="L69" title="All 4 branches missed.">        if (tasks == null || tasks.isEmpty()) {</span>
+<span class="nc" id="L70">            return ResponseEntity.noContent().build();</span>
+        }
+
+<span class="nc" id="L73">        List&lt;TaskResponse&gt; response = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        for(Task task : tasks) {</span>
+<span class="nc" id="L75">            response.add(this.createTaskResponse(task));</span>
+<span class="nc" id="L76">        }</span>
+
+<span class="nc" id="L78">        return ResponseEntity.ok(response);</span>
+    }
+
+//    @GetMapping(&quot;/{taskId}&quot;)
+//    public ResponseEntity&lt;TaskResponse&gt; getTaskById(@PathVariable String taskId) {
+//        Task task = taskService.getTaskById(taskId);
+//
+//        if (task == null) {
+//            return ResponseEntity.notFound().build();
+//        }
+//
+//        TaskResponse taskResponse = createTaskResponse(task);
+//
+//        return ResponseEntity.ok(taskResponse);
+//    }
+
+    @GetMapping(&quot;/user/{userId}&quot;)
+    public ResponseEntity&lt;List&lt;TaskResponse&gt;&gt; getTasksByUserId(@PathVariable(&quot;userId&quot;) String userId) {
+<span class="nc" id="L96">        List&lt;Task&gt; tasksForUser = taskService.getTasksByUserId(userId);</span>
+
+<span class="nc bnc" id="L98" title="All 2 branches missed.">        if(tasksForUser == null) {</span>
+<span class="nc" id="L99">            return ResponseEntity.noContent().build();</span>
+        }
+
+<span class="nc" id="L102">        List&lt;TaskResponse&gt; responseList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L103" title="All 2 branches missed.">        for(Task task : tasksForUser) {</span>
+<span class="nc" id="L104">            responseList.add(createTaskResponse(task));</span>
+<span class="nc" id="L105">        }</span>
+
+<span class="nc" id="L107">        return ResponseEntity.ok(responseList);</span>
+    }
+
+    @DeleteMapping(&quot;/{taskId}&quot;)
+    public ResponseEntity deleteTaskByTaskId(@PathVariable(&quot;taskId&quot;) String taskId) {
+<span class="nc" id="L112">        taskService.deleteTask(taskId);</span>
+
+<span class="nc" id="L114">        return ResponseEntity.noContent().build();</span>
+    }
+
+    private TaskResponse createTaskResponse(Task task) {
+<span class="nc" id="L118">        TaskResponse taskResponse = new TaskResponse();</span>
+<span class="nc" id="L119">        taskResponse.setTaskId(task.getTaskId());</span>
+<span class="nc" id="L120">        taskResponse.setCreatorUsername(task.getCreatorUsername());</span>
+<span class="nc" id="L121">        taskResponse.setTitle(task.getTitle());</span>
+<span class="nc" id="L122">        taskResponse.setDescription(task.getDescription());</span>
+<span class="nc" id="L123">        taskResponse.setCollaborators(task.getCollaborators());</span>
+<span class="nc" id="L124">        taskResponse.setStatus(task.getStatus());</span>
+<span class="nc" id="L125">        return taskResponse;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

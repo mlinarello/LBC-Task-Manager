@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CommentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application</a> &gt; <a href="index.source.html" class="el_package">com.kenzie.appserver.controller</a> &gt; <span class="el_source">CommentController.java</span></div><h1>CommentController.java</h1><pre class="source lang-java linenums">package com.kenzie.appserver.controller;
+
+import com.kenzie.appserver.controller.model.CommentCreateRequest;
+import com.kenzie.appserver.controller.model.CommentDeleteRequest;
+import com.kenzie.appserver.controller.model.CommentResponse;
+import com.kenzie.appserver.service.CommentService;
+import com.kenzie.appserver.service.model.Comment;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@RestController
+@RequestMapping(&quot;/comments&quot;)
+public class CommentController {
+    private CommentService commentService;
+
+<span class="nc" id="L19">    CommentController(CommentService commentService) {</span>
+<span class="nc" id="L20">        this.commentService = commentService;</span>
+
+<span class="nc" id="L22">    }</span>
+
+    @PostMapping(&quot;/create&quot;)
+    public ResponseEntity&lt;CommentResponse&gt; createComment(@RequestBody CommentCreateRequest commentCreateRequest) {
+<span class="nc" id="L26">        Comment comment = new Comment(UUID.randomUUID().toString(), commentCreateRequest.getTaskId(),</span>
+<span class="nc" id="L27">                commentCreateRequest.getCommentBody(), commentCreateRequest.getUsername());</span>
+<span class="nc" id="L28">        CommentResponse response = commentService.createComment(comment);</span>
+<span class="nc" id="L29">        return ResponseEntity.ok(response);</span>
+    }
+
+    @GetMapping(&quot;/{taskId}&quot;)
+    public ResponseEntity&lt;List&lt;CommentResponse&gt;&gt; getCommentsByTaskId(@PathVariable String taskId) {
+<span class="nc" id="L34">        List&lt;CommentResponse&gt; commentResponses = commentService.getCommentsByTaskId(taskId);</span>
+<span class="nc" id="L35">        return ResponseEntity.ok(commentResponses);</span>
+    }
+
+
+    @DeleteMapping()
+    public ResponseEntity&lt;String&gt; deleteCommentByCommentId(@RequestBody CommentDeleteRequest commentDeleteRequest) {
+<span class="nc" id="L41">        commentService.deleteCommentByCommentId(commentDeleteRequest.getCommentId());</span>
+<span class="nc" id="L42">        return ResponseEntity.ok(commentDeleteRequest.getCommentId());</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

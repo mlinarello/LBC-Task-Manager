@@ -1,0 +1,58 @@
+.navbar-brand{
+    font-family: Caveat;
+    font-weight: bold;
+    color:antiquewhite !important;
+}
+
+.navbar *{
+    color: antiquewhite !important;
+}
+
+
+.taskbody{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.accordion{
+    max-width: 80%;
+    min-width: 75%;
+    padding-left: 15%;
+    padding-top: 5%;
+}
+
+.tasksHeader{
+    color:antiquewhite;
+}
+
+.accordion-item{
+    background-color: #C0C0C0 !important;
+}
+
+.accordion-button {
+    background-color: lightgray !important;
+}
+
+
+
+body{
+    display: block;
+    background-color: #181a1b !important;
+}
+
+.task-dropdown-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#status{
+    color: black !important;
+}
+
+
+.form-group {
+    color: antiquewhite;
+}

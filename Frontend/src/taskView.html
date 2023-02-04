@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/individualTask.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link rel="icon" href="svg/shark.svg">
+    <title id="task-view-page-title">Task View</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">MNDT Task Manager</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="homePage.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <header id="render-header">
+    </header>
+
+    <div class="comment-section">
+        <h4 style="color:antiquewhite;">Comments</h4>
+        <div class="list-group" id="comment-render-area">
+<!--            <a href="#" class="list-group-item list-group-item-action" aria-current="true">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                    <h5 class="mb-1">Mike Linarello</h5>-->
+<!--                    <small>3 days ago | 10:38am</small>-->
+<!--                </div>-->
+<!--                <p class="mb-1">I ran into an issue with range key in dynamodb, anyone else experiencing this?</p>-->
+<!--                <small>Team engineer</small>-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                    <h5 class="mb-1">Nathan Krueger</h5>-->
+<!--                    <small class="text-muted">2 days ago | 9:42am</small>-->
+<!--                </div>-->
+<!--                <p class="mb-1">Actually running into an issue with the range key also, I'll send the project manager a-->
+<!--                    message about this.</p>-->
+<!--                <small class="text-muted">Team engineer</small>-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action">-->
+<!--                <div class="d-flex w-100 justify-content-between">-->
+<!--                    <h5 class="mb-1">Ibrahim Salman</h5>-->
+<!--                    <small class="text-muted">1 days ago | 8:53am</small>-->
+<!--                </div>-->
+<!--                <p class="mb-1">Seems to be an issue with a dependency, I will cover this in our standup today.</p>-->
+<!--                <small class="text-muted">Project Manager</small>-->
+<!--            </a>-->
+        </div>
+    </div>
+<form id="create-comment-form" style="max-width: 90%; padding-left: 10%; color: antiquewhite">
+    <div class="form-group">
+        <label for="create-comment-description">Leave a comment!</label>
+        <textarea required class="form-control" id="create-comment-description" rows="3"></textarea>
+    </div>
+    <button class="btn btn-outline-success" type="submit">Publish</button>
+</form>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous">
+    </script>
+    <script src="taskPage.js"></script>
+</body>
+
+</html>

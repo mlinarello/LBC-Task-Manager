@@ -1,0 +1,15 @@
+.navbar-brand{
+    font-family: Caveat;
+    font-weight: bold;
+    color:antiquewhite !important;
+
+}
+.navbar * {
+    color: antiquewhite !important;
+    
+}
+
+body *{
+    background-color: #181a1b;
+    color: antiquewhite;
+}

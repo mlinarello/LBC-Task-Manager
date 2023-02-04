@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Comment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application</a> &gt; <a href="index.source.html" class="el_package">com.kenzie.appserver.service.model</a> &gt; <span class="el_source">Comment.java</span></div><h1>Comment.java</h1><pre class="source lang-java linenums">package com.kenzie.appserver.service.model;
+
+import java.util.Objects;
+
+public class Comment {
+    private String commentId;
+    private String taskId;
+    private String commentBody;
+    private String username;
+
+
+<span class="nc" id="L12">    public Comment() {</span>
+<span class="nc" id="L13">    }</span>
+
+<span class="nc" id="L15">    public Comment(String commentId, String taskId, String commentBody, String username) {</span>
+<span class="nc" id="L16">        this.commentId = commentId;</span>
+<span class="nc" id="L17">        this.taskId = taskId;</span>
+<span class="nc" id="L18">        this.commentBody = commentBody;</span>
+<span class="nc" id="L19">        this.username = username;</span>
+<span class="nc" id="L20">    }</span>
+
+
+    public String getCommentId() {
+<span class="nc" id="L24">        return commentId;</span>
+    }
+
+    public void setCommentId(String commentId) {
+<span class="nc" id="L28">        this.commentId = commentId;</span>
+<span class="nc" id="L29">    }</span>
+
+    public String getTaskId() {
+<span class="nc" id="L32">        return taskId;</span>
+    }
+
+    public void setTaskId(String taskId) {
+<span class="nc" id="L36">        this.taskId = taskId;</span>
+<span class="nc" id="L37">    }</span>
+
+    public String getCommentBody() {
+<span class="nc" id="L40">        return commentBody;</span>
+    }
+
+    public void setCommentBody(String commentBody) {
+<span class="nc" id="L44">        this.commentBody = commentBody;</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getUsername() {
+<span class="nc" id="L48">        return username;</span>
+    }
+
+    public void setUsername(String username) {
+<span class="nc" id="L52">        this.username = username;</span>
+<span class="nc" id="L53">    }</span>
+
+    @Override
+    public boolean equals(Object o) {
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        if (this == o) return true;</span>
+<span class="nc bnc" id="L58" title="All 4 branches missed.">        if (o == null || getClass() != o.getClass()) return false;</span>
+
+<span class="nc" id="L60">        Comment comment = (Comment) o;</span>
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (!Objects.equals(commentId, comment.commentId)) return false;</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (!Objects.equals(taskId, comment.taskId)) return false;</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">        if (!Objects.equals(commentBody, comment.commentBody)) return false;</span>
+<span class="nc" id="L65">        return Objects.equals(username, comment.username);</span>
+    }
+
+    @Override
+    public int hashCode() {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">        int result = commentId != null ? commentId.hashCode() : 0;</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">        result = 31 * result + (taskId != null ? taskId.hashCode() : 0);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        result = 31 * result + (commentBody != null ? commentBody.hashCode() : 0);</span>
+<span class="nc bnc" id="L73" title="All 2 branches missed.">        result = 31 * result + (username != null ? username.hashCode() : 0);</span>
+<span class="nc" id="L74">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

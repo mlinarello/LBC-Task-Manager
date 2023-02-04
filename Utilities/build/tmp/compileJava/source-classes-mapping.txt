@@ -1,0 +1,2 @@
+com/kenzie/ata/ExcludeFromJacocoGeneratedReport.java
+ com.kenzie.ata.ExcludeFromJacocoGeneratedReport

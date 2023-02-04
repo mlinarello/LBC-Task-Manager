@@ -1,0 +1,39 @@
+body{
+    background-color: #181a1b;
+    color: antiquewhite;
+    justify-content: center;
+    align-items: center;
+}
+
+html{
+    background-color: #181a1b;
+    min-height: 100%;
+}
+
+.navbar-brand{
+    font-family: Caveat;
+    font-weight: bold;
+    color:antiquewhite !important;
+
+}
+.navbar * {
+    color: antiquewhite !important;
+}
+
+h1{
+    margin-bottom: 0rem !important;
+    background-color: #181a1b;
+    color: antiquewhite;
+    text-align: center;
+    padding-bottom: 1em;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.login-input{
+    background-color: #181a1b;
+    color: antiquewhite;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
